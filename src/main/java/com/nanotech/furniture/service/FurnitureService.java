@@ -127,4 +127,9 @@ public class FurnitureService {
 
         return furnitureRepository.save(existing);
     }
+    
+    public List<Furniture> getFurnitureByCategory(Long categoryId) {
+        return furnitureRepository.findByCategoryId(categoryId);
+    }
+
 }

@@ -7,6 +7,7 @@ import com.nanotech.furniture.service.FurnitureService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -76,4 +77,11 @@ public class FurnitureController {
     ) throws Exception {
         return furnitureService.updateFurniture(id, name, description, height, width, categoryId, image, images);
     }
+    
+    @GetMapping("/byCategory/{categoryId}")
+    public ResponseEntity<List<Furniture>> getFurnitureByCategory(@PathVariable("categoryId") Long categoryId) {
+        List<Furniture> furnitureList = furnitureService.getFurnitureByCategory(categoryId);
+        return ResponseEntity.ok(furnitureList);
+    }
+
 }
